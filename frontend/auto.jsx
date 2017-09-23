@@ -4,10 +4,19 @@ export default class AutoComplete extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputVal: ''
+      inputVal: '',
+      img: "https://www.logodesignlove.com/images/classic/nba-logo.jpg"
     };
     this.selectPlayer = this.selectPlayer.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.getPlayerImage = this.getPlayerImage.bind(this);
+  }
+
+  getPlayerImage(name) {
+    let newImageBase = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/"
+    let newPlayerId = this.props.players[name]
+    let newImageEnd = ".png"
+    return newImageBase + newPlayerId + newImageEnd
   }
 
   handleInput(event) {
@@ -17,10 +26,10 @@ export default class AutoComplete extends React.Component {
   matches() {
     const matches = [];
     if (this.state.inputVal.length === 0) {
-      return this.props.players;
+      return Object.keys(this.props.players);
     }
 
-    this.props.players.forEach(player => {
+    Object.keys(this.props.players).forEach(player => {
       let sub = player.slice(0, this.state.inputVal.length);
       if (sub.toLowerCase() === this.state.inputVal.toLowerCase()) {
         matches.push(player);
@@ -36,7 +45,7 @@ export default class AutoComplete extends React.Component {
 
   selectPlayer(event) {
     let player = event.currentTarget.innerText;
-    this.setState({inputVal: player});
+    this.setState({inputVal: player, img: this.getPlayerImage(player)});
   }
 
   render() {
@@ -57,6 +66,7 @@ export default class AutoComplete extends React.Component {
               {results}
           </ul>
         </div>
+        <img src={this.state.img} />
       </div>
     );
   }

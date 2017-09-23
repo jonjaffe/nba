@@ -3,20 +3,14 @@ import ReactDOM from 'react-dom';
 
 import AutoComplete from './auto';
 
-const Players = [
-  'Stephen Curry',
-  'John Wall',
-  'Klay Thompson',
-  'Kyrie Irving',
-  'Kevin Durant',
-  'Gordon Hayward'
-];
-
-const Panes = [
-  {title: 'one', content: 'I am the first'},
-  {title: 'two', content: 'Second pane here'},
-  {title: 'three', content: 'Third pane here'}
-];
+const Players = {
+  'Stephen Curry': 201939,
+  'John Wall': 202322,
+  'Klay Thompson': 202691,
+  'Kyrie Irving': 202681,
+  'Kevin Durant': 201142,
+  'Gordon Hayward': 202330
+};
 
 class Root extends React.Component {
   render() {

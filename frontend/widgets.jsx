@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import AutoComplete from './auto';
 
-const Names = [
-  'Abba',
-  'Barney',
-  'Barbara',
-  'Jeff',
-  'Jenny',
-  'Sarah',
-  'Sally',
-  'Xander'
+const Players = [
+  'Stephen Curry',
+  'John Wall',
+  'Klay Thompson',
+  'Kyrie Irving',
+  'Kevin Durant',
+  'Gordon Hayward'
 ];
 
 const Panes = [
@@ -24,6 +23,7 @@ class Root extends React.Component {
     return (
       <div>
         hey there
+        <AutoComplete players={Players} />
       </div>
     );
   }
